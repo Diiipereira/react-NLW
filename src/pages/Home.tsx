@@ -1,3 +1,4 @@
+import toast, { Toaster } from 'react-hot-toast';
 import { useHistory } from 'react-router-dom';
 import { FormEvent } from 'react';
 
@@ -13,6 +14,8 @@ import { useAuth } from '../hooks/useAuth';
 import { useState } from 'react';
 
 import '../styles/auth.scss';
+
+const notify = () => {};
 
 export function Home() {
   const history = useHistory();
@@ -37,12 +40,32 @@ export function Home() {
     const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
     if(!roomRef.exists()) {
-      alert('Esta sala não existe.');
+      toast.error('Códido da sala inválido', {
+        style: {
+          background: '#ea4335',
+          padding: '14px',
+          color: '#fff',
+        },
+        iconTheme: {
+          primary: '#ea4335',
+          secondary: '#fff',
+        },
+      });
       return;
     }
 
     if (roomRef.val().endedAt) {
-      alert('Esta sala foi fechada.');
+      toast.error('Esta sala foi fechada', {
+        style: {
+          background: '#835afd',
+          padding: '14px',
+          color: '#fff',
+        },
+        iconTheme: {
+          primary: '#FFF',
+          secondary: '#ea4335',
+        },
+      });
       return;
     }
 
@@ -71,9 +94,15 @@ export function Home() {
               onChange={event => setRoomCode(event.target.value)}
               value={roomCode}
              />
-             <Button type="submit">
+             <div>
+             <Button type="submit" onClick={notify}>
                Entrar na sala
              </Button>
+             <Toaster
+                position="top-center"
+                reverseOrder={true}
+             />
+             </div>
           </form>
         </div>
       </main>
