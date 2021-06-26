@@ -1,5 +1,6 @@
 #page-auth {
   display: flex;
+  flex-direction: row;
   align-items: stretch;
   height: 100vh;
 
@@ -138,5 +139,25 @@
       background: #a8a8b3;
       margin-left: 16px;
     }
+  }
+}
+@media (max-width: 1000px) {
+  #page-auth {
+    flex-direction: column;
+    height: 100%;
+  }
+  #page-auth aside img {
+    max-width: 320px;
+    margin-top: -50px;
+  }
+  #page-auth aside strong {
+    font-size: 40px;
+    margin-top: -300px;
+    margin-left: 30px;
+  }
+  #page-auth aside p {
+    font-size: 40px;
+    margin-left: 10px;
+
   }
 }
