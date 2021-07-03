@@ -141,23 +141,26 @@
     }
   }
 }
-@media (max-width: 1000px) {
+@media (max-width: 1024px) {
   #page-auth {
     flex-direction: column;
-    height: 100%;
+    align-items: stretch;
+    height: 100vh;
+  }
+  #page-auth aside {
+    height: 100vh;
   }
   #page-auth aside img {
-    max-width: 320px;
-    margin-top: -50px;
+    max-width: 250px;
+    margin-top: 50px;
   }
   #page-auth aside strong {
-    font-size: 40px;
+    font-size: 42px;
     margin-top: -300px;
     margin-left: 30px;
   }
   #page-auth aside p {
-    font-size: 40px;
+    font-size: 32px;
     margin-left: 10px;
-
   }
 }
